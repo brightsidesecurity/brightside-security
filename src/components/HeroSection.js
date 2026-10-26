@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Section from "./Section";
 import SliderContactForm from "./SliderContactForm";
 import slidercontact from "./../util/slidercontact.js";
-import SectionHeader from "./SectionHeader";
-import SectionButton from "./SectionButton";
 import "./HeroSection.scss";
 
 function HeroSection(props) {
@@ -12,13 +10,29 @@ function HeroSection(props) {
     const onSubmit = ({ name, email, number, service }) => {
         setStatus({ type: "pending" });
 
-        slidercontact.submit({ name, email, number, service }).then(() => {
-            setStatus({
-                type: "success",
-                message: "Your message has been sent! We'll get back to you soon."
+        slidercontact.submit({ name, email, number, service })
+            .then(res => {
+                if (res && res.status === "error") {
+                    throw new Error(res.error || "Submission failed");
+                }
+                setStatus({
+                    type: "success",
+                    message: "Thank you! Your quote request has been sent to info@brightside-security.com."
+                });
+            })
+            .catch(err => {
+                console.error("Quote submission error:", err);
+                setStatus({
+                    type: "error",
+                    message: "Unable to submit your quote request online right now. Please call us directly at (510) 396-1974 or email info@brightside-security.com."
+                });
             });
-        });
     };
+
+    const onReset = () => {
+        setStatus(null);
+    };
+
   return (
     <Section className="main-slider">
         <ul className="main-slider-carousel">
@@ -37,6 +51,7 @@ function HeroSection(props) {
                             <div className="slider-form bg-white contact-us-form-wrapper">
                                 <SliderContactForm
                                     onSubmit={onSubmit}
+                                    onReset={onReset}
                                     status={status}
                                 />
                             </div>
@@ -44,15 +59,6 @@ function HeroSection(props) {
                     </div>
                 </li>
             </ul>
-            {/* <div className="social-icon-box">
-                <p className="social">Social</p>
-                <div className="social-icon">
-                    <a href="#"><i className="fab fa-facebook-f"></i></a>
-                    <a href="#"><i className="fab fa-twitter"></i></a>
-                    <a href="#"><i className="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i className="fab fa-instagram"></i></a>
-                </div>
-            </div> */}
     </Section>
   );
 }

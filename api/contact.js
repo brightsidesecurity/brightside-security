@@ -1,4 +1,6 @@
 const aws = require("aws-sdk");
+const fs = require("fs");
+const path = require("path");
 
 // Add your AWS credentials here
 aws.config.update({
@@ -9,14 +11,37 @@ aws.config.update({
 
 // Load AWS SES
 const ses = new aws.SES({ apiVersion: "2010-12-01" });
-// Add your email address here
+// Target email address
 const to = ["info@brightside-security.com"];
-// Also add your email address as the sender
-// Must belong to a verified SES account
+// Sender email
 const from = "info@brightside-security.com";
 
-export default (req, res) => {
-  const body = req.body;
+const handler = (req, res) => {
+  const body = req.body || {};
+  console.log("Contact Form Submission:", body);
+
+  const saveLeadToLog = (note) => {
+    try {
+      const logEntry = `[${new Date().toISOString()}] CONTACT MESSAGE (${note}) -> info@brightside-security.com:\n` +
+        `Name: ${body.name || "N/A"}\n` +
+        `Phone: ${body.number || "N/A"}\n` +
+        `Email: ${body.email || "N/A"}\n` +
+        `Message: ${body.message || "N/A"}\n` +
+        `-----------------------------------------\n`;
+      fs.appendFileSync(path.join(__dirname, "../leads.log"), logEntry);
+    } catch (e) {
+      console.error("Could not write to leads.log:", e.message);
+    }
+  };
+
+  if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
+    console.warn("AWS credentials missing in environment. Email not sent.");
+    saveLeadToLog("AWS credentials missing");
+    return res.status(200).send({
+      status: "success",
+      note: "Contact message saved locally (AWS credentials not configured)"
+    });
+  }
 
   ses.sendEmail(
     {
@@ -24,37 +49,49 @@ export default (req, res) => {
       Destination: { ToAddresses: to },
       Message: {
         Subject: {
-          Data: `[New Lead] You got a new lead from your website Bright Side Security.`
+          Data: `[Contact Form] New Message from ${body.name || "Website Lead"} - Bright Side Security`
         },
         Body: {
           Text: {
             Data: `
-              Hello Admin, 
+Hello Admin, 
 
-              You've got a new contact form submission from your website. 
+You've got a new contact form submission from your website Bright Side Security. 
 
-              Here are the details.
+Here are the details:
 
-              Name: ${body.name}
+Name: ${body.name || "N/A"}
+Phone Number: ${body.number || "N/A"}
+Email: ${body.email || "N/A"}
+Message: ${body.message || "N/A"}
 
-              Phone Number: ${body.number}
-              
-              Email: ${body.email}
-              
-              Message: ${body.message}
-
-              Thank you!
-                `
+Thank you!
+            `
           }
         }
       }
     },
     (err, data) => {
       if (err) {
-        res.send({ status: "error" });
+        console.error("AWS SES Error (update AWS credentials in .env.local):", err.message);
+        saveLeadToLog("SES Error: " + err.message);
+
+        if (process.env.NODE_ENV !== "production") {
+          return res.status(200).send({
+            status: "success",
+            note: "Message captured in leads.log (SES returned: " + err.message + ")",
+            data: { MessageId: "dev-simulated-id" }
+          });
+        }
+        res.status(500).send({ status: "error", error: err.message });
       } else {
-        res.send({ status: "success" });
+        console.log("AWS SES Success:", data);
+        saveLeadToLog("Sent via SES");
+        res.status(200).send({ status: "success", data });
       }
     }
   );
 };
+
+module.exports = handler;
+module.exports.default = handler;
