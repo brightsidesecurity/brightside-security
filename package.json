@@ -14,7 +14,7 @@
     "fake-auth": "0.0.5",
     "jquery": "^3.5.1",
     "mailchimp-api-v3": "1.13.1",
-    "node-sass": "4.12.0",
+    "node-sass": "npm:sass@^1.77.0",
     "query-string": "6.8.3",
     "react": "16.10.2",
     "react-dom": "16.10.2",
@@ -25,11 +25,11 @@
     "react-select": "^3.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "node --openssl-legacy-provider ./node_modules/react-scripts/scripts/start.js",
+    "build": "node --openssl-legacy-provider ./node_modules/react-scripts/scripts/build.js",
+    "test": "node --openssl-legacy-provider ./node_modules/react-scripts/scripts/test.js",
     "eject": "react-scripts eject",
-    "dev": "BROWSER=none react-scripts start"
+    "dev": "BROWSER=none node --openssl-legacy-provider ./node_modules/react-scripts/scripts/start.js"
   },
   "eslintConfig": {
     "extends": "react-app"
