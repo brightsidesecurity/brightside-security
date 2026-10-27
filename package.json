@@ -28,7 +28,7 @@
     "node": ">=18.0.0 <25.0.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node scripts/ensure-build.js && node server.js",
     "build": "node scripts/run.js build",
     "test": "node scripts/run.js test",
     "eject": "react-scripts eject",
