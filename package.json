@@ -24,12 +24,15 @@
     "react-scripts": "3.2.0",
     "react-select": "^3.1.0"
   },
+  "engines": {
+    "node": ">=18.0.0 <25.0.0"
+  },
   "scripts": {
-    "start": "node --openssl-legacy-provider ./node_modules/react-scripts/scripts/start.js",
-    "build": "node --openssl-legacy-provider ./node_modules/react-scripts/scripts/build.js",
-    "test": "node --openssl-legacy-provider ./node_modules/react-scripts/scripts/test.js",
+    "start": "node scripts/run.js start",
+    "build": "node scripts/run.js build",
+    "test": "node scripts/run.js test",
     "eject": "react-scripts eject",
-    "dev": "BROWSER=none node --openssl-legacy-provider ./node_modules/react-scripts/scripts/start.js"
+    "dev": "BROWSER=none node scripts/run.js start"
   },
   "eslintConfig": {
     "extends": "react-app"
