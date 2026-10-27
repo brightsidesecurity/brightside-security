@@ -33,7 +33,16 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", service: "Bright Side Security, INC API" });
 });
 
-const PORT = process.env.API_PORT || 8080;
+// Serve static React build assets in production if build/ exists
+const buildPath = path.join(__dirname, "build");
+if (fs.existsSync(buildPath)) {
+  app.use(express.static(buildPath));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(buildPath, "index.html"));
+  });
+}
+
+const PORT = process.env.PORT || process.env.API_PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Bright Side Security, INC API server listening on http://localhost:${PORT}`);
+  console.log(`Bright Side Security, INC server listening on port ${PORT}`);
 });
