@@ -1,33 +1,36 @@
-const { spawn } = require('child_process');
+const crypto = require('crypto');
+
+// Webpack 4 (used by react-scripts 3.x) uses MD4 for hashing.
+// OpenSSL 3.0+ in Node 17+ disables MD4 by default, causing ERR_OSSL_EVP_UNSUPPORTED.
+// Some Node builds (such as CloudLinux alt-nodejs, minimal builds, or Node < 17)
+// do NOT recognize the '--openssl-legacy-provider' CLI flag and crash with:
+// "node: bad option: --openssl-legacy-provider".
+//
+// By monkey-patching crypto.createHash in-process, MD4 is transparently redirected
+// to sha256 with NO CLI flags required, working seamlessly across all Node versions and platforms.
+const origCreateHash = crypto.createHash;
+crypto.createHash = function (algorithm, options) {
+  if (algorithm === 'md4') {
+    return origCreateHash.call(crypto, 'sha256', options);
+  }
+  try {
+    return origCreateHash.call(crypto, algorithm, options);
+  } catch (err) {
+    if (err && err.code === 'ERR_OSSL_EVP_UNSUPPORTED') {
+      return origCreateHash.call(crypto, 'sha256', options);
+    }
+    throw err;
+  }
+};
 
 const script = process.argv[2] || 'start';
-const majorVersion = parseInt(process.versions.node.split('.')[0], 10);
-const args = [];
 
-// Node 17+ uses OpenSSL 3.0 which requires the legacy provider for Webpack 4 MD4 hashing.
-// Node < 17 does not have or support this flag and will throw "bad option: --openssl-legacy-provider".
-if (majorVersion >= 17) {
-  args.push('--openssl-legacy-provider');
-}
+// Remove the script name argument ('build', 'start', etc.) so react-scripts sees expected argv
+process.argv.splice(2, 1);
 
 try {
-  const scriptPath = require.resolve(`react-scripts/scripts/${script}.js`);
-  args.push(scriptPath, ...process.argv.slice(3));
-
-  const child = spawn(process.execPath, args, {
-    stdio: 'inherit',
-    env: process.env,
-  });
-
-  child.on('error', (err) => {
-    console.error(`Failed to execute react-scripts ${script}:`, err);
-    process.exit(1);
-  });
-
-  child.on('close', (code) => {
-    process.exit(code !== null ? code : 0);
-  });
+  require(`react-scripts/scripts/${script}.js`);
 } catch (err) {
-  console.error(`Could not find react-scripts/scripts/${script}.js:`, err);
+  console.error(`Failed to execute react-scripts ${script}:`, err);
   process.exit(1);
 }
