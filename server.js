@@ -2,15 +2,20 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 
-const envLocalPath = path.join(__dirname, ".env.local");
-if (fs.existsSync(envLocalPath)) {
-  try {
-    process.loadEnvFile(envLocalPath);
-    console.log("Loaded environment variables from .env.local");
-  } catch (e) {
-    console.warn("Could not load .env.local:", e.message);
+const loadEnvFile = (filename) => {
+  const filePath = path.join(__dirname, filename);
+  if (fs.existsSync(filePath) && typeof process.loadEnvFile === "function") {
+    try {
+      process.loadEnvFile(filePath);
+      console.log(`Loaded environment variables from ${filename}`);
+    } catch (e) {
+      console.warn(`Could not load ${filename}:`, e.message);
+    }
   }
-}
+};
+
+loadEnvFile(".env");
+loadEnvFile(".env.local");
 
 const app = express();
 app.use(express.json());
