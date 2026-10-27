@@ -25,6 +25,12 @@ crypto.createHash = function (algorithm, options) {
 
 const script = process.argv[2] || 'start';
 
+// Hosts such as Vercel/Netlify set CI=true, which makes react-scripts fail the
+// build on any ESLint warning. Don't treat warnings as errors in production builds.
+if (script === 'build') {
+  process.env.CI = 'false';
+}
+
 // Remove the script name argument ('build', 'start', etc.) so react-scripts sees expected argv
 process.argv.splice(2, 1);
 
