@@ -8,9 +8,9 @@
   "dependencies": {
     "@analytics/google-analytics": "0.2.0",
     "analytics": "0.2.6",
-    "aws-sdk": "2.533.0",
+    "aws-sdk": "2.814.0",
     "bulma": "0.7.5",
-    "express": "4.17.1",
+    "express": "4.22.0",
     "fake-auth": "0.0.5",
     "jquery": "^3.5.1",
     "mailchimp-api-v3": "1.13.1",
