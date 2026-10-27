@@ -43,8 +43,7 @@ function Navbar(props) {
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                     <div id="blink" className="contact-number">
-                        <a id="blinkText" href="tel:5103961974" className="phone-bumber">(510) 396-1974</a>
-                        <a id="blinkText" href="tel:5105651530" className="phone-bumber">(510) 565-1530</a>
+                        <a id="blinkText" href="tel:5103961974" className="phone-bumber">510-396-1974</a>
                     </div>
                 </div>
             </nav>

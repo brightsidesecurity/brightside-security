@@ -24,7 +24,7 @@ function ContactUsSection(props) {
         console.error("Contact form error:", err);
         setStatus({
           type: "error",
-          message: "Unable to send message right now. Please call us directly at (510) 396-1974 or email info@brightside-security.com."
+          message: "Unable to send message right now. Please call us directly at 510-396-1974 or email info@brightside-security.com."
         });
       });
   };
@@ -45,10 +45,7 @@ function ContactUsSection(props) {
               <ul>
                 <li className="phone-number">
                   <a href="tel:5103961974">
-                    <span>(510) 396-1974</span>
-                  </a>
-                  <a href="tel:5105651530">
-                    <span>(510) 565-1530</span>
+                    <span>510-396-1974</span>
                   </a>
                 </li>
 
@@ -58,10 +55,10 @@ function ContactUsSection(props) {
                   </a>
                 </li>
                 <li className="location">
-                  <a href="https://goo.gl/maps/VycqS1g5kbDCAWcr6" target="_blank" rel="noopener noreferrer">
-                    <span>Bright Side Security</span>
-                    <span>2140 Peralta Blvd. Ste. 213E</span>
-                    <span> Fremont, CA 94536</span>
+                  <a href="https://maps.google.com/?q=8915+Osterville+Way,+Elk+Grove,+CA+95758" target="_blank" rel="noopener noreferrer">
+                    <span>Bright Side Security, INC</span>
+                    <span>8915 Osterville Way</span>
+                    <span>Elk Grove, CA 95758</span>
                   </a>
                 </li>
               </ul>

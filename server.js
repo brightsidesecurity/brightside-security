@@ -30,10 +30,10 @@ app.post("/api/contact", wrap(contactHandler));
 app.post("/api/newsletter", wrap(newsletterHandler));
 
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", service: "Bright Side Security API" });
+  res.json({ status: "ok", service: "Bright Side Security, INC API" });
 });
 
 const PORT = process.env.API_PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Bright Side Security API server listening on http://localhost:${PORT}`);
+  console.log(`Bright Side Security, INC API server listening on http://localhost:${PORT}`);
 });

@@ -13,7 +13,7 @@ function TinyPopup(props) {
                 <img src={require('../assets/images/pngwave.png')} alt="bright-side-security-private-security-officers-in-fremont-california"/>
             </div>
             <div  className="text">
-                <h3>Call Us Now at<br/><span id="blink"><a href="tel:5103961974" id="blinkText">(510) 396-1974</a></span></h3>
+                <h3>Call Us Now at<br/><span id="blink"><a href="tel:5103961974" id="blinkText">510-396-1974</a></span></h3>
             </div>
         </div>
     </Section>

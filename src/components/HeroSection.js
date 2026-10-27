@@ -41,9 +41,9 @@ function HeroSection(props) {
                     <div className="slider-caption">
                         <div className="container">
                             <div className="slider-content">
-                                <h6>License NO. PPO 120617</h6>
+                                <h6>License NO. PPO# 122512</h6>
                                 <h1 className="mt-15 mb-40 mr-80">Premium <span>Security</span> Services Trusted By <span>Millions</span></h1>
-                                <p className="mb-50">At Bright Side Security, we provide ourselves on fulfilling security services to our valued clients. Our highly experienced private patrol company goes to great levels to provide exceptional security.</p>
+                                <p className="mb-50">At Bright Side Security, INC, we provide ourselves on fulfilling security services to our valued clients. Our highly experienced private patrol company goes to great levels to provide exceptional security.</p>
                                 <div className="link-btn">
                                     <a href="#about" className="theme-btn btn-style-one">Learn More</a>
                                 </div>

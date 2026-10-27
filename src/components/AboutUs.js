@@ -35,10 +35,10 @@ function AboutUsSection(props) {
                             </div>
                         </div>
                         <div className="link-btn mb-100 ">
-                            <a href="tel:5103961974" className="theme-btn btn-style-two">Call Now : (510) 196-1974</a>
+                            <a href="tel:5103961974" className="theme-btn btn-style-two">Call Now : 510-396-1974</a>
                         </div>
                         <div className="about-us-image ">
-                            <img src={require('../assets/images/about-us/about-us-1.jpg')} alt="bright-side-security-private-security-officers-in-fremont-california" />
+                            <img src={require('../assets/images/about-us/about-us-1.jpg')} alt="bright-side-security-inc-private-security-officers" />
                         </div>
                     </div>
                     <div className="col-md-6">

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import FormStatus from "./FormStatus";
 import FormField from "./FormField";
 import SectionButton from "./SectionButton";
-import Recaptcha from "react-recaptcha";
 import Select from "react-select";
 
 function SliderContactForm(props) {
@@ -56,15 +55,6 @@ function SliderContactForm(props) {
     });
   }
 
-  let recaptchaInstance = null;
-  const recaptchaLoaded = () => {
-    console.log("Recaptcha loaded");
-  };
-
-  const verifyCallback = response => {
-    console.log("Recaptcha verified:", response);
-  };
-
   const handleServiceChange = option => {
     setSelectedOption(option);
     setService(option ? option.value : "");
@@ -90,13 +80,6 @@ function SliderContactForm(props) {
       setNumber("");
       setSelectedOption(null);
       setShowErrors(false);
-      if (recaptchaInstance && typeof recaptchaInstance.reset === "function") {
-        try {
-          recaptchaInstance.reset();
-        } catch (err) {
-          console.warn("Recaptcha reset skipped", err);
-        }
-      }
     }
   };
 
@@ -128,7 +111,7 @@ function SliderContactForm(props) {
           Thank You!
         </h3>
         <p className="mb-3" style={{ fontSize: "1rem", color: "#495057", lineHeight: "1.6" }}>
-          Thank you for requesting a quote from <strong>Bright Side Security</strong>. Your request has been sent to{" "}
+          Thank you for requesting a quote from <strong>Bright Side Security, INC</strong>. Your request has been sent to{" "}
           <strong style={{ color: "#d9232d" }}>info@brightside-security.com</strong>. Our team will review your requirements and get back to you shortly.
         </p>
 
@@ -152,7 +135,7 @@ function SliderContactForm(props) {
               textDecoration: "none"
             }}
           >
-            (510) 396-1974
+            510-396-1974
           </a>
         </div>
 
@@ -235,17 +218,6 @@ function SliderContactForm(props) {
                 {getError("service").message}
               </p>
             )}
-          </div>
-
-          <div style={{ margin: "10px 0" }}>
-            <Recaptcha
-              id="slider-form-captcha"
-              ref={e => (recaptchaInstance = e)}
-              sitekey="6LdyBbEZAAAAAJ5TiZKVxPS0jh5qlPZxU0Qnsm2R"
-              render="explicit"
-              onloadCallback={recaptchaLoaded}
-              verifyCallback={verifyCallback}
-            />
           </div>
 
           <div className="link-btn pt-15" data-wow-delay="0.90s">

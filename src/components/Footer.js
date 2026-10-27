@@ -67,10 +67,10 @@ function Footer(props) {
                     <div className="col-lg-5 col-md-6">
                         <div className="location-wrapper mb-100">
                             <h4 className="mb-30">location</h4>
-                            <a href="https://goo.gl/maps/VycqS1g5kbDCAWcr6">
-                              <span>Bright Side Security</span>
-                              <span>2140 Peralta Blvd. Ste. 213E </span>
-                              <span>Fremont, CA 94536</span>
+                            <a href="https://maps.google.com/?q=8915+Osterville+Way,+Elk+Grove,+CA+95758" target="_blank" rel="noopener noreferrer">
+                              <span>Bright Side Security, INC</span>
+                              <span>8915 Osterville Way </span>
+                              <span>Elk Grove, CA 95758</span>
                             </a>
                         </div>
                     </div>
@@ -79,13 +79,12 @@ function Footer(props) {
                             <h4 className="mb-30">Say Hello</h4>
                             
                             <a href="mailto:info@brightside-security.com"><span>info@brightside-security.com</span></a>
-                            <a href="tel:5103961974"><span>(510) 396-1974</span></a>
-                            <a href="tel:5105651530"><span>Office: (510) 565-1530</span></a>
+                            <a href="tel:5103961974"><span>510-396-1974</span></a>
                             
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <p className="text-white phone-center">&copy; 2020 Bright Side Security. All rights reserved.</p>
+                        <p className="text-white phone-center">&copy; 2026 Bright Side Security, INC. All rights reserved.</p>
                     </div>
                     <div className="col-lg-6 col-md-12">
                         <div className="copyright">
@@ -110,7 +109,7 @@ function Footer(props) {
                       <a href="tel:5103961974"><i className="fa fa-phone"></i><br/>Call Now</a>
                   </div>
                   <div className="column scrollcta">
-                      <a href="https://goo.gl/maps/VycqS1g5kbDCAWcr6"><i className="fa fa-map"></i><br/>Direction</a>
+                      <a href="https://maps.google.com/?q=8915+Osterville+Way,+Elk+Grove,+CA+95758" target="_blank" rel="noopener noreferrer"><i className="fa fa-map"></i><br/>Direction</a>
                   </div>
                 </div>
               </div>

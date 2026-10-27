@@ -95,7 +95,7 @@ function ContactForm(props) {
         </h3>
         <p className="mb-3" style={{ fontSize: "1rem", color: "#495057", lineHeight: "1.6" }}>
           Your message has been successfully submitted to{" "}
-          <strong style={{ color: "#d9232d" }}>info@brightside-security.com</strong>. One of our representatives will contact you shortly.
+          <strong style={{ color: "#d9232d" }}>info@brightside-security.com</strong>. One of our representatives from <strong>Bright Side Security, INC</strong> will contact you shortly.
         </p>
 
         <div
@@ -118,7 +118,7 @@ function ContactForm(props) {
               textDecoration: "none"
             }}
           >
-            (510) 396-1974
+            510-396-1974
           </a>
         </div>
 

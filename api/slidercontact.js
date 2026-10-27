@@ -49,14 +49,14 @@ const handler = (req, res) => {
       Destination: { ToAddresses: to },
       Message: {
         Subject: {
-          Data: `[Quote Request] New Quote Request from ${body.name || "Website Lead"} - Bright Side Security`
+          Data: `[Quote Request] New Quote Request from ${body.name || "Website Lead"} - Bright Side Security, INC`
         },
         Body: {
           Text: {
             Data: `
 Hello Admin, 
 
-You've got a new quote request from your website Bright Side Security. 
+You've got a new quote request from your website Bright Side Security, INC. 
 
 Here are the details:
 

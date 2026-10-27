@@ -92,7 +92,7 @@ function OurServicesSection(props) {
                     </div>
                 </div>
                 <div className="link-btn text-center mb-150 mt-20 ">
-                    <a href="tel:5103961974" className="theme-btn btn-style-two">Call Now : (510) 396-1974</a>
+                    <a href="tel:5103961974" className="theme-btn btn-style-two">Call Now : 510-396-1974</a>
                 </div>
             </div>
     </Section>

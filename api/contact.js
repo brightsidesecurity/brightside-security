@@ -49,14 +49,14 @@ const handler = (req, res) => {
       Destination: { ToAddresses: to },
       Message: {
         Subject: {
-          Data: `[Contact Form] New Message from ${body.name || "Website Lead"} - Bright Side Security`
+          Data: `[Contact Form] New Message from ${body.name || "Website Lead"} - Bright Side Security, INC`
         },
         Body: {
           Text: {
             Data: `
 Hello Admin, 
 
-You've got a new contact form submission from your website Bright Side Security. 
+You've got a new contact form submission from your website Bright Side Security, INC. 
 
 Here are the details:
 
