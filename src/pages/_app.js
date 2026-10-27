@@ -71,7 +71,7 @@ function App(props) {
             color="light"
             size="normal"
             logo={require('../assets/images/bs-logo.png')}
-            copyright="© 2019 Company"
+            copyright="© 2026 Bright Side Security, INC"
           />
           <TinyPopup />
         </>

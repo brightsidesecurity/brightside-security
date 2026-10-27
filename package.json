@@ -30,6 +30,7 @@
   "scripts": {
     "start": "node scripts/run.js start",
     "build": "node scripts/run.js build",
+    "serve": "node server.js",
     "test": "node scripts/run.js test",
     "eject": "react-scripts eject",
     "dev": "BROWSER=none node scripts/run.js start"
