@@ -68,7 +68,7 @@ function Footer(props) {
                         <div className="location-wrapper mb-100">
                             <h4 className="mb-30">location</h4>
                             <a href="https://maps.google.com/?q=8915+Osterville+Way,+Elk+Grove,+CA+95758" target="_blank" rel="noopener noreferrer">
-                              <span>Bright Side Security</span>
+                              <span>Bright Side Security, Inc</span>
                               <span>8915 Osterville Way </span>
                               <span>Elk Grove, CA 95758</span>
                             </a>
@@ -84,7 +84,7 @@ function Footer(props) {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <p className="text-white phone-center">&copy; 2026 Bright Side Security. All rights reserved.</p>
+                        <p className="text-white phone-center">&copy; 2026 Bright Side Security, Inc. All rights reserved.</p>
                     </div>
                     <div className="col-lg-6 col-md-12">
                         <div className="copyright">
