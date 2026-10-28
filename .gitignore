@@ -9,7 +9,7 @@
 /coverage
 
 # production
-/build
+# build/ is committed so hosts without a build step can serve the site
 
 # misc
 .DS_Store
