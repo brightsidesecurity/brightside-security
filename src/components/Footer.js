@@ -84,7 +84,7 @@ function Footer(props) {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <p className="text-white phone-center">&copy; 2026 Bright Side Security, INC. All rights reserved.</p>
+                        <p className="text-white phone-center">&copy; 2026 Bright Side Security. All rights reserved.</p>
                     </div>
                     <div className="col-lg-6 col-md-12">
                         <div className="copyright">
