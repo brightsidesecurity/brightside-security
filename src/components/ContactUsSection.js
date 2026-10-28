@@ -56,7 +56,7 @@ function ContactUsSection(props) {
                 </li>
                 <li className="location">
                   <a href="https://maps.google.com/?q=8915+Osterville+Way,+Elk+Grove,+CA+95758" target="_blank" rel="noopener noreferrer">
-                    <span>Bright Side Security, INC</span>
+                    <span>Bright Side Security</span>
                     <span>8915 Osterville Way</span>
                     <span>Elk Grove, CA 95758</span>
                   </a>
