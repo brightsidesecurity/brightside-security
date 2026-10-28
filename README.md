@@ -23,7 +23,7 @@ This project uses the following libraries and services:
 - Framework - [Create React App](https://create-react-app.dev) with React Router
 - Styling - [Bulma](https://bulma.io) with custom SASS styles
 - Newsletter - [Mailchimp](https://mailchimp.com) (via server endpoint)
-- Contact Form - [Amazon SES](https://aws.amazon.com/ses/) (via server endpoint)
+- Contact Form - Hostinger mailbox over SMTP via [Nodemailer](https://nodemailer.com/) (via server endpoint)
 - Analytics - [Google Analytics](https://googleanalytics.com)
 - Hosting - [ZEIT Now](https://zeit.co)
 
